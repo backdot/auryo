@@ -1,16 +1,21 @@
-@import "../../Player.module.scss";
-@import "../../../../../css/bootstrap.imports.scss";
+@import '../../Player.module.scss';
+@import '../../../../../css/bootstrap.imports.scss';
+
 .control {
   @extend %playerControl;
+
   & :global i.bx-shuffle {
     font-size: 1.2rem;
   }
+
   &.control__active {
     color: $blue !important;
   }
+
   & .repost_icon__one {
     position: relative;
-    &:after {
+
+    &::after {
       content: '1';
       top: 0;
       height: 10px;
@@ -31,9 +36,20 @@
   }
 }
 
+.trackLike {
+  @extend %playerControl;
+  margin-right: 1rem;
+}
+
+.trackLike__liked {
+  :global i {
+    color: $red;
+  }
+}
+
 .control_shuffle {
   font-size: 1rem;
-  margin-top: -.1rem;
+  margin-top: -0.1rem;
 }
 
 .control_toggle {
@@ -41,12 +57,13 @@
   color: #ffffff;
   background-position: center;
   background-repeat: no-repeat;
-  background: rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, 0.14);
   padding: 2px;
 }
 
 .mediaControls {
-  padding: 0 .95rem;
+  padding: 0 0.95rem;
+
   .control {
     font-size: 1.8rem;
     opacity: 1;

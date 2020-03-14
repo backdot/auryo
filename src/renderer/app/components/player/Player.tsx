@@ -254,16 +254,16 @@ class Player extends React.Component<AllProps, State> {
             userId={trackUser.id.toString()}
             username={trackUser.username}
             img={overlayImage}
-            liked={liked}
-            toggleLike={() => {
-              toggleLike(track.id);
-            }}
           />
 
           <PlayerControls
             status={status}
+            liked={liked}
             repeat={repeat}
             shuffle={shuffle}
+            toggleLike={() => {
+              toggleLike(track.id);
+            }}
             onRepeatClick={this.toggleRepeat}
             onShuffleClick={this.toggleShuffle}
             onPreviousClick={() => {

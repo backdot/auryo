@@ -7,7 +7,9 @@ interface Props {
   repeat: RepeatTypes | null;
   shuffle: boolean;
   status: PlayerStatus;
+  liked: boolean;
 
+  toggleLike(): void;
   onRepeatClick(): void;
   onShuffleClick(): void;
   onPreviousClick(): void;
@@ -18,9 +20,27 @@ interface Props {
 const getIcon = (status: PlayerStatus) => (status === PlayerStatus.PLAYING ? 'pause' : 'play');
 
 const PlayerControls = React.memo<Props>(
-  ({ status, repeat, shuffle, onRepeatClick, onPreviousClick, onToggleClick, onNextClick, onShuffleClick }) => {
+  ({
+    status,
+    liked,
+    repeat,
+    shuffle,
+    toggleLike,
+    onRepeatClick,
+    onPreviousClick,
+    onToggleClick,
+    onNextClick,
+    onShuffleClick
+  }) => {
     return (
       <>
+        <a
+          className={cn(styles.trackLike, { [styles.trackLike__liked]: liked })}
+          href="javascript:void(0)"
+          onClick={toggleLike}>
+          <i className={`bx ${liked ? 'bxs-heart' : 'bx-heart'}`} />
+        </a>
+
         <a
           href="javascript:void(0)"
           className={cn(styles.control, { [styles.control__active]: repeat !== null })}

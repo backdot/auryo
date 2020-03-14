@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FallbackImage from '../../../../../_shared/FallbackImage';
@@ -11,20 +10,11 @@ interface Props {
   id: string;
   userId: string;
   username: string;
-
-  liked: boolean;
-  toggleLike(): void;
 }
 
-export const TrackInfo = React.memo<Props>(({ img, title, id, userId, username, liked, toggleLike }) => (
+export const TrackInfo = React.memo<Props>(({ img, title, id, userId, username }) => (
   <div className={styles.trackInfo}>
     <div className={styles.playerAlbum}>
-      <a
-        className={cn(styles.trackLike, { [styles.trackLike__liked]: liked })}
-        href="javascript:void(0)"
-        onClick={toggleLike}>
-        <i className={`bx ${liked ? 'bxs-heart' : 'bx-heart'}`} />
-      </a>
       <FallbackImage noPlaceholder fluid src={img} />
     </div>
     <div className={styles.trackDetails}>
